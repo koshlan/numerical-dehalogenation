@@ -19,9 +19,9 @@ import matplotlib.pyplot as plt
 V_total  = 1                    # Volume in Liters  
 V_liquid = 0.4                  # Volume in Liters
 V_liquid_max = 0.4
-V_gas = V_total - V_liquid        # Volume in Liters
+V_gas = V_total - V_liquid      # Volume in Liters
  
-Q = 0.024                      # Flow Rate L/Day
+Q = 0.024                       # Flow Rate L/Day
 
 # Henry's Partition Constant Dimensionless Cgas/Caqeous
 K_h_TCE = 0.42 
@@ -43,7 +43,7 @@ C_gas_VC = 0
 C_gas_DCA = 0
 C_gas_H = 0
 
-X1 = 10                         #[mg protein/ L];
+X1 = 10                         # [mg protein/ L];
 X2 = 10
 
 # INFLUENT CONCENTRATION (ASSUME STABLE)
@@ -59,8 +59,8 @@ C_in_H = 30000
 
 ```python
 # Population 1 SPECIFIC CONSTANTS tceA containing Dehalococcoides
-vTCE_1  = 28              # [uMol/mg/day]   # Vmax TCE, Population 1
-vDCE_1  = 14                 # [uMol/mg/day]   # Vmax DCE, Population 1
+vTCE_1  = 28                # [uMol/mg/day]   # Vmax TCE, Population 1
+vDCE_1  = 14                # [uMol/mg/day]   # Vmax DCE, Population 1
 vVC_1   = 0                 # [uMol/mg/day]   # Vmax VC, Population 1
 vDCA_1  = 0
 kTCE_1  = 1.8               # [uM]            # Ks,TCE Population 1
@@ -83,9 +83,9 @@ H_thr_1 = 0.01
 
 ```python
 # Population 2 SPECIFIC CONSTANTS vcrA containing Dehalococcoides
-vTCE_2  = 1             # [uMol/mg/day]   # Vmax TCE, Population 2
+vTCE_2  = 1                 # [uMol/mg/day]   # Vmax TCE, Population 2
 vDCE_2  = 14                # [uMol/mg/day]   # Vmax DCE, Population 2
-vVC_2   = 14                 # [uMol/mg/day]   # Vmax VC, Population 2
+vVC_2   = 14                # [uMol/mg/day]   # Vmax VC, Population 2
 vDCA_2  = 0
 kTCE_2  = 1.8               # [uM]            # Ks,TCE Population 2
 kDCE_2  = 1.8               # [uM]            # Ks,DCE Population 2
@@ -133,7 +133,7 @@ storage = {'counter':[],
 
 
 
-DT = 0.001                       # Timestep Fraction Days
+DT = 0.001                  # Timestep Fraction Days
 n = 200000                  # Number of Steps
 for i in range(n):
     # BLOCK HANDLES INPUT OF SUBSTRATE AND EQUILIBRATION OF GAS AND LIQUID
@@ -164,10 +164,10 @@ for i in range(n):
     ###########
     M_gas_VC = C_gas_VC * V_gas
     M_liquid_VC = C_liquid_VC * V_liquid
-    M_total_VC =  M_gas_VC + M_liquid_VC                 # CALCULATE TOTAL MASS FROM PREVIOUS
+    M_total_VC =  M_gas_VC + M_liquid_VC                  # CALCULATE TOTAL MASS FROM PREVIOUS
     M_total_VC += (C_in_VC * Q * DT)                      # UPDATE TOTAL MASS WITH ADDITION
-    C_liquid_VC = M_total_VC / (K_h_VC*V_gas + V_liquid) # PARTITION uMol/L
-    C_gas_VC = K_h_VC * C_liquid_VC                      # PARTITION uMol/L
+    C_liquid_VC = M_total_VC / (K_h_VC*V_gas + V_liquid)  # PARTITION uMol/L
+    C_gas_VC = K_h_VC * C_liquid_VC                       # PARTITION uMol/L
     M_liquid_VC = C_liquid_VC * V_liquid                  # UPDATE TOTAL MASS IN LIQUID WITH ADDITION
     M_gas_VC = C_gas_VC * V_gas                           # UPDATE TOTAL MASS IN GAS WITH ADDITION    
     
@@ -176,10 +176,10 @@ for i in range(n):
     ##########
     M_gas_H = C_gas_H * V_gas
     M_liquid_H = C_liquid_H * V_liquid
-    M_total_H =  M_gas_H + M_liquid_H                 	# CALCULATE TOTAL MASS FROM PREVIOUS
+    M_total_H =  M_gas_H + M_liquid_H                 	 # CALCULATE TOTAL MASS FROM PREVIOUS
     M_total_H += (C_in_H * Q * DT)                      # UPDATE TOTAL MASS WITH ADDITION
-    C_liquid_H = M_total_H / (K_h_H*V_gas + V_liquid) 	# PARTITION uMol/L
-    C_gas_H = K_h_H * C_liquid_H                      	# PARTITION uMol/L
+    C_liquid_H = M_total_H / (K_h_H*V_gas + V_liquid) 	 # PARTITION uMol/L
+    C_gas_H = K_h_H * C_liquid_H                       	# PARTITION uMol/L
     M_liquid_H = C_liquid_H * V_liquid                  # UPDATE TOTAL MASS IN LIQUID WITH ADDITION
     M_gas_H = C_gas_H * V_gas                           # UPDATE TOTAL MASS IN GAS WITH ADDITION
       
